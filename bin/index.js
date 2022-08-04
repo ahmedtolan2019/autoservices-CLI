@@ -251,7 +251,11 @@ const createSidebarRoute = (
         `
                 //${href}
                 {
-                    href: "/admin/${href}",
+                    href: "/admin/${
+                      inputs["parent-screen"]
+                        ? `${beforePosition}/${href}`
+                        : href
+                    }",
                     title: "${title}",
                     icon: ${iconName}
                 },
@@ -289,8 +293,8 @@ if (inputs["screen"]) {
           dashedToCamelCase(inputs["parent-screen"])
         )}/screens/${capFirst(dashedToCamelCase(inputs.name))}`;
       }
-      await createDir(screenDir);
-      await createDir(`${screenDir}\\screens`);
+      await createDir(screenDir, { recursive: true });
+      await createDir(`${screenDir}\\screens`, { recursive: true });
 
       //create index with returned content from screen
       await createFile(`${screenDir}\\index.js`, screen(inputs.name));

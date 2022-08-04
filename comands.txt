@@ -1,3 +1,6 @@
+
+###### DataTable ######
+
 To create a Parent Data table
 ----------------------------------------------------------------------------------------------
 autoser --data-table --name table-name --dataUrl api-route-get-all/no-slash-first --deleteUrl api-route-delet-one/no-slash-first --path src//data-tables//
@@ -6,3 +9,28 @@ autoser --data-table --name table-name --dataUrl api-route-get-all/no-slash-firs
 To create a Child Data table
 ----------------------------------------------------------------------------------------------
 autoser --data-table --name child-table-name --dataUrl api-route-get-all/no-slash-first --deleteUrl api-route-delet-one/no-slash-first --path src//data-tables//parent-table//
+
+
+###### Screen ######
+
+To Create a parent screen with route
+----------------------------------------------------------------------------------------------
+autoser --screen --name screen-name --route-path screan-route
+
+
+To Create a parent screen with route and sidebar icon and title
+----------------------------------------------------------------------------------------------
+autoser --screen --name screen-name  --route-path screen-route --sidebar --t Screen-Title --iName IconName --iPath @material-ui/icons/IconName --bfrpos before-position
+Ex: autoser --screen --name tolan-ahmedd  --route-path tolan-ahmedd --sidebar --t Tolan-Ahmed --iName Adb --iPath @material-ui/icons/Adb --bfrpos reports
+
+
+To Create a child screen with route
+----------------------------------------------------------------------------------------------
+autoser --screen --parent-screen parent-name --name child-name --route-path child-route-path
+Ex: autoser --screen --parent-screen orders --name pending-delivery --route-path pending-delivery
+
+
+To Create a child screen with route and sidebar icon and title
+----------------------------------------------------------------------------------------------
+autoser --screen --name child-name --parent-screen parent-name  --route-path child-route --sidebar --t Child-Title --iName IconName --iPath @material-ui/icons/IconName --bfrpos before-position
+EX: autoser --screen --name cancel-reasons --parent-screen settings  --route-path cancel-reasons --sidebar --t Cancel-Reasons --iName DoNotDisturbAlt --iPath @material-ui/icons/DoNotDisturbAlt --bfrpos working-details
