@@ -1,0 +1,8 @@
+To create a Parent Data table
+----------------------------------------------------------------------------------------------
+autoser --data-table --name table-name --dataUrl api-route-get-all/no-slash-first --deleteUrl api-route-delet-one/no-slash-first --path src//data-tables//
+
+
+To create a Child Data table
+----------------------------------------------------------------------------------------------
+autoser --data-table --name child-table-name --dataUrl api-route-get-all/no-slash-first --deleteUrl api-route-delet-one/no-slash-first --path src//data-tables//parent-table//

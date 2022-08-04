@@ -152,12 +152,12 @@ if (inputs["data-table"]) {
     try {
       let dataTableName = dashedToCamelCase(inputs.name);
       //create main table folder
-      await createDir(`${dataTableName}`);
+      await createDir(`${dataTableName}`, { recursive: true });
 
       //create all folders and files inside of this main folder
       for (let doc of docs) {
         if (doc.type === "folder") {
-          await createDir(`${dataTableName}\\${doc.name}`);
+          await createDir(`${dataTableName}\\${doc.name}`, { recursive: true });
 
           //create files inside
           for (let file of doc.content) {
