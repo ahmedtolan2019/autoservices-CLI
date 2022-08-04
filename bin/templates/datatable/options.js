@@ -5,6 +5,14 @@ export const options = (name) => {
   let capName = capFirst(dashedToCamelCase(name));
   let camelCaseName = dashedToCamelCase(name);
   return `
+  export const use${capName}Options = () => {
+    let options = {
+      pageSize: 10,
+      actionsColumnIndex: -1,
+    };
+    return {options};
+  };
   
+
   `;
 };
