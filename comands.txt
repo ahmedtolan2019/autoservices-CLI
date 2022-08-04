@@ -1,4 +1,9 @@
 
+
+###### AUTO SERVICE CLI ######
+first run => npm install -g
+
+
 ###### DataTable ######
 
 To create a Parent Data table
@@ -34,3 +39,17 @@ To Create a child screen with route and sidebar icon and title
 ----------------------------------------------------------------------------------------------
 autoser --screen --name child-name --parent-screen parent-name  --route-path child-route --sidebar --t Child-Title --iName IconName --iPath @material-ui/icons/IconName --bfrpos before-position
 EX: autoser --screen --name cancel-reasons --parent-screen settings  --route-path cancel-reasons --sidebar --t Cancel-Reasons --iName DoNotDisturbAlt --iPath @material-ui/icons/DoNotDisturbAlt --bfrpos working-details
+
+
+###### Forms and Features ######
+
+To Create add form with add custom hook
+----------------------------------------------------------------------------------------------
+autoser --form --type add --name entity-name --parent parent-folder --add-url api-route-to-add-one/no-slash-first
+Ex: autoser --form --type add --name driver --parent drivers --add-url lookup/driver
+
+To Create edit form with edit custom hook
+----------------------------------------------------------------------------------------------
+autoser --form --type edit --name entity-name --parent parent-folder --get-one-url api-route-to-get-one/no-slash-first --edit-url api-route-to-edit-one/no-slash-first
+EX:autoser --form --type edit --name driver --parent drivers --get-one-url lookup/driver --edit-url lookup/driver
+
