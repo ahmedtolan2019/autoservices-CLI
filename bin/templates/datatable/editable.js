@@ -27,17 +27,16 @@ export const use${capName}Editable = (all${capName}Query) => {
       toast.promise(
         Axios.delete(\`/${deleteUrl}/\${oldData._id}\`, {
           signal: controller.signal
-        })
-          .then(() => {
-            all${capName}Query.refetch();
-          })
-          .catch(() => {}),
+        }),
         {
           loading: "Deleting...",
           success: "Deleted successfully",
           error: "Error deleting!",
         }
-      ),
+      ).then(() => {
+        all${capName}Query.refetch();
+      })
+      .catch(() => {}),
       };
       return {editable};
 

@@ -28,7 +28,7 @@ export const editFeature = (name, editUrl, getOneUrl) => {
   
     const edit${capName}Mutation = useMutation((values) =>
       toast
-        .promise(Axios.put("/${editUrl}", values), {
+        .promise(Axios.put("/${editUrl}/" + ${camelCaseName}Id , values), {
           loading: "Editting One...",
           success: "Edited successfully",
           error: "Error editing One",

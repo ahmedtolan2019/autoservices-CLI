@@ -22,7 +22,7 @@ export const addForm = (name) => {
   import ImageInputWrapper from "src/components/common/FormUI/FormImageInput";
   import { ArrowBack } from "@material-ui/icons";
   import { useNavigate } from "react-router-dom";
-  import useAdd${capName} from "src/features/cities/useAdd${capName}";
+  import useAdd${capName} from "src/features/${camelCaseName}s/useAdd${capName}";
   const INITIAL_FORM_STATE = {
     nameAr: "",
     nameEn: "",

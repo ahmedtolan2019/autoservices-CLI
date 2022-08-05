@@ -22,7 +22,7 @@ export const data = (name, getDataUrl) => {
     }, []);
   
     const all${capName}Query = useQuery(
-      ["followParts", search, page, dateValue, swichChecked],
+      ["${camelCaseName}", search, page, dateValue, swichChecked],
       () => {
         let url = "/${getDataUrl}?";
   

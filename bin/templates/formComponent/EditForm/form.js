@@ -27,7 +27,7 @@ export const editForm = (name) => {
   import { useEffect } from "react";
   import { useNavigate } from "react-router-dom";
   
-  import useEdit${capName} from "src/features/cities/useEdit${capName}";
+  import useEdit${capName} from "src/features/${camelCaseName}s/useEdit${capName}";
   
   const fields = [
     { name: "nameAr", label: "${capName} Name Ar", fieldType: "text", gridXs: 6 },
