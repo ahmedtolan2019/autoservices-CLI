@@ -38,6 +38,14 @@ EX:
 autoser --screen --parent-screen merchants --name add-merchant --route-path add
 autoser --screen --parent-screen merchants --name edit-merchant --route-path :id
 
+To Create a child screen to child screan with route
+----------------------------------------------------------------------------------------------
+autoser --screen --parent-screen parent-name//screens//child-name// --name sub-child-name --route-path sub-child-route
+
+
+EX:
+autoser --screen --parent-screen tolan-users//screens//add-tolan// --name edit-tolan --route-path add
+
 
 To Create a child screen with route and sidebar icon and title
 ----------------------------------------------------------------------------------------------

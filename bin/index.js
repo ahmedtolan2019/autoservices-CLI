@@ -200,8 +200,14 @@ const createRoute = (routePath, elementName, elementPath, parentElementName) =>
               newData = data.replace(
                 `//${parentElementName} childern`,
                 `//${parentElementName} childern\n{
-                  path: "${routePath}",
-                  element: <${elementName} />
+                  path: "${routePath}",                  
+                  children: [
+                    //${elementName} childern
+                    {
+                      path: "/",
+                      element: <${elementName} />,
+                    }
+                  ]
                 },`
               );
             } else {
@@ -300,12 +306,29 @@ if (inputs["screen"]) {
       await createFile(`${screenDir}\\index.js`, screen(inputs.name));
 
       //create route for this screen
+      let parentNameArr = inputs["parent-screen"]
+        ? inputs["parent-screen"].split("//")
+        : [];
+      let parentName = "";
+      //for 2 levels of childeren
+      if (parentNameArr.length === 4) {
+        parentName = parentNameArr[2];
+        screenElementPath = `src/screens/${capFirst(
+          dashedToCamelCase(parentNameArr[0])
+        )}/screens/${capFirst(
+          dashedToCamelCase(parentNameArr[2])
+        )}/screens/${capFirst(dashedToCamelCase(inputs.name))}`;
+      } else if (parentNameArr.length === 1) {
+        parentName = parentNameArr[0];
+      } else {
+        parentName = null;
+      }
       createRoute(
         `${inputs["route-path"] ?? inputs.name}`,
         `${capFirst(dashedToCamelCase(inputs.name))}Screen`,
         `${screenElementPath}`,
         inputs["parent-screen"]
-          ? `${capFirst(dashedToCamelCase(inputs["parent-screen"]))}Screen`
+          ? `${capFirst(dashedToCamelCase(parentName))}Screen`
           : null
       );
 
