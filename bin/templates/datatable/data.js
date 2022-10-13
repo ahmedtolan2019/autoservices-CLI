@@ -9,8 +9,8 @@ export const data = (name, getDataUrl) => {
   import { useQuery } from "react-query";
   
   import Axios from "src/common/axios";
-  import { getDateQuery } from "src/data-tables/helpers/getDateQuery";
-  import { useDateModal } from "../contexts/useDateModal";
+  // import { getDateQuery } from "src/data-tables/helpers/getDateQuery";
+  // import { useDateModal } from "../contexts/useDateModal";
   import toast from "react-hot-toast";
   import { useQueryFilters } from "src/lib/common/react-query-filters";
   import { useLocation } from "react-router-dom";
