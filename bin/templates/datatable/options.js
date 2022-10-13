@@ -9,6 +9,8 @@ export const options = (name) => {
     let options = {
       pageSize: 10,
       actionsColumnIndex: -1,
+      searchAutoFocus: false,
+      search: false,
     };
     return {options};
   };

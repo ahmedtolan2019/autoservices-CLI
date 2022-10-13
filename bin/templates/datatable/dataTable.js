@@ -7,13 +7,13 @@ export const dataTable = (name) => {
   return `
   import { MainDataTable } from "src/data-tables/components/MainDataTable";
   import { use${capName}DataTable } from "./contexts/use${capName}DataTable";
-  
+  import { useQueryFilters } from "src/lib/common/react-query-filters";
+
   export const ${capName}DataTable = () => {
     const {
-      page,
-      search,
-      setSearch,
-      setPage,
+     
+     
+     
       all${capName}Query,
       columns,
       actions,
@@ -22,6 +22,8 @@ export const dataTable = (name) => {
       getComponents,
       cellEditable,
     } = use${capName}DataTable();
+
+    const { page, setPage } = useQueryFilters();
   
     return (
       <MainDataTable
@@ -38,7 +40,8 @@ export const dataTable = (name) => {
         // cellEditable={cellEditable}
         components={getComponents()}
         onSearchChange={(search) => {
-          setSearch(search);
+          // setSearch(search);
+          console.log("search", search);
         }}
         page={page}
         onChangePage={(page) => {

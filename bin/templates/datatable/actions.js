@@ -6,10 +6,14 @@ export const actions = (name) => {
   let camelCaseName = dashedToCamelCase(name);
   return `
 
-  import { useNavigate } from "react-router-dom";
+  import { useNavigate,useLocation } from "react-router-dom";
+  import { useQueryFilters } from "src/lib/common/react-query-filters";
+
 
   export const use${capName}Actions = (all${capName}Query) => {
     const navigate = useNavigate();
+    const location = useLocation();
+  const { queryUrl, page } = useQueryFilters();
   
     let actions = [
       {
@@ -18,20 +22,20 @@ export const actions = (name) => {
         isFreeAction: true,
         onClick: () => all${capName}Query.refetch(),
       },
-      {
-        icon: "edit",
-        tooltip: "Edit this One",
-        isFreeAction: false,
-        onClick: (event, rowData) => {
-          navigate(\`/admin/${name}/edit/\$\{rowData._id\}\`);
-        },
-      },
-      {
-        icon: "add",
-        tooltip: "Add One",
-        isFreeAction: true,
-        onClick: () => navigate(\`/admin/${name}/add\`),
-      },
+      // {
+      //   icon: "edit",
+      //   tooltip: "Edit this One",
+      //   isFreeAction: false,
+      //   onClick: (event, rowData) => {
+      //     navigate(\`/admin/${name}/edit/\$\{rowData._id\}\`);
+      //   },
+      // },
+      // {
+      //   icon: "add",
+      //   tooltip: "Add One",
+      //   isFreeAction: true,
+      //   onClick: () => navigate(\`/admin/${name}/add\`),
+      // },
     ];
   
     return { actions };

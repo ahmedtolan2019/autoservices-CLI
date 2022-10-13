@@ -7,7 +7,7 @@ export const useDataTable = (name) => {
   return `
 
   import { useState, useContext, createContext } from "react";
-  import { useDateModal } from "./useDateModal";
+  // import { useDateModal } from "./useDateModal";
   
   import { use${capName}Data } from "../helpers/use${capName}Data";
   import { use${capName}Columns } from "../helpers/use${capName}Columns";
@@ -30,21 +30,21 @@ export const useDataTable = (name) => {
   };
   const useProvide${capName}DataTable = () => {
     //states
-    const [search, setSearch] = useState(null);
-    const [page, setPage] = useState(0);
-    const { dateValue } = useDateModal();
+    // const [search, setSearch] = useState(null);
+    // const [page, setPage] = useState(0);
+    // const { dateValue } = useDateModal();
     //handle contacted switch
-    const [swichChecked, setSwichChecked] = useState(false);
+    // const [swichChecked, setSwichChecked] = useState(false);
   
     //columns
     const { columns } = use${capName}Columns();
   
     //data
     const { all${capName}Query } = use${capName}Data(
-      search,
-      page,
-      dateValue,
-      swichChecked
+      // search,
+      // page,
+      // dateValue,
+      // swichChecked
     );
   
     //actions
@@ -57,10 +57,7 @@ export const useDataTable = (name) => {
     const { cellEditable } = use${capName}CellEditable(all${capName}Query);
   
     //components
-    const { getComponents } = use${capName}Components(
-      swichChecked,
-      setSwichChecked
-    );
+    const { getComponents } = use${capName}Components();
   
     //options
     const { options } = use${capName}Options();
@@ -73,11 +70,11 @@ export const useDataTable = (name) => {
       cellEditable,
       getComponents,
       options,
-      search,
-      setSearch,
-      page,
-      setPage,
-      dateValue,
+      // search,
+      // setSearch,
+      // page,
+      // setPage,
+      // dateValue,
     };
   };
   

@@ -7,41 +7,41 @@ export const dateModel = (name) => {
   return `
             
 
-import { useState, useContext, createContext } from "react";
-const ctx = createContext();
-const { Provider } = ctx;
+// import { useState, useContext, createContext } from "react";
+// const ctx = createContext();
+// const { Provider } = ctx;
 
-export const ProvideDate = ({ children }) => {
-  const value = useProvideDate();
-  return <Provider value={value}>{children}</Provider>;
-};
+// export const ProvideDate = ({ children }) => {
+//   const value = useProvideDate();
+//   return <Provider value={value}>{children}</Provider>;
+// };
 
-export const useDateModal = () => {
-  return useContext(ctx);
-};
-const useProvideDate = () => {
-  const [modalDateOpen, setModalDateOpen] = useState(false);
-  const [dateValue, setDateValue] = useState(null);
+// export const useDateModal = () => {
+//   return useContext(ctx);
+// };
+// const useProvideDate = () => {
+//   const [modalDateOpen, setModalDateOpen] = useState(false);
+//   const [dateValue, setDateValue] = useState(null);
 
-  const handeDateChange = (date) => {
-    setDateValue(date);
-  };
+//   const handeDateChange = (date) => {
+//     setDateValue(date);
+//   };
 
-  const handleOpenModal = () => {
-    setModalDateOpen(true);
-  };
+//   const handleOpenModal = () => {
+//     setModalDateOpen(true);
+//   };
 
-  const handleCloseModal = () => {
-    setModalDateOpen(false);
-  };
-  return {
-    dateValue,
-    modalDateOpen,
-    handeDateChange,
-    handleOpenModal,
-    handleCloseModal,
-  };
-};
+//   const handleCloseModal = () => {
+//     setModalDateOpen(false);
+//   };
+//   return {
+//     dateValue,
+//     modalDateOpen,
+//     handeDateChange,
+//     handleOpenModal,
+//     handleCloseModal,
+//   };
+// };
 
 
 

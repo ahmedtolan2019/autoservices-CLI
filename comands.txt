@@ -9,6 +9,7 @@ first run => npm install -g
 To create a Parent Data table
 ----------------------------------------------------------------------------------------------
 autoser --data-table --name table-name --dataUrl api-route-get-all/no-slash-first --deleteUrl api-route-delet-one/no-slash-first --path src//data-tables//
+autoser --data-table --name errorLogs --dataUrl errorlogs --deleteUrl errorLogs --path src//data-tables//
 
 
 To create a Child Data table
@@ -44,7 +45,7 @@ autoser --screen --parent-screen parent-name//screens//child-name// --name sub-c
 
 
 EX:
-autoser --screen --parent-screen tolan-users//screens//add-tolan// --name edit-tolan --route-path add
+autoser --screen --parent-screen settings//screens//rates// --name add-rate --route-path add
 
 
 To Create a child screen with route and sidebar icon and title
@@ -58,10 +59,10 @@ EX: autoser --screen --name cancel-reasons --parent-screen settings  --route-pat
 To Create add form with add custom hook
 ----------------------------------------------------------------------------------------------
 autoser --form --type add --name entity-name --parent parent-folder --add-url api-route-to-add-one/no-slash-first
-Ex: autoser --form --type add --name driver --parent drivers --add-url lookup/driver
+Ex: autoser --form --type add --name rate --parent rates --add-url rates
 
 To Create edit form with edit custom hook
 ----------------------------------------------------------------------------------------------
 autoser --form --type edit --name entity-name --parent parent-folder --get-one-url api-route-to-get-one/no-slash-first --edit-url api-route-to-edit-one/no-slash-first
-EX:autoser --form --type edit --name driver --parent drivers --get-one-url lookup/driver --edit-url lookup/driver
+EX:autoser --form --type edit --name rate --parent rates --get-one-url rates --edit-url rates
 

@@ -12,38 +12,56 @@ export const data = (name, getDataUrl) => {
   import { getDateQuery } from "src/data-tables/helpers/getDateQuery";
   import { useDateModal } from "../contexts/useDateModal";
   import toast from "react-hot-toast";
+  import { useQueryFilters } from "src/lib/common/react-query-filters";
+  import { useLocation } from "react-router-dom";
+
   
-  export const use${capName}Data = (search, page, dateValue, swichChecked) => {
+  export const use${capName}Data = () => {
     const controller = new AbortController();
+    const location = useLocation();
+    const { page, queryUrl, setPage } = useQueryFilters();
+
     useEffect(() => {
+
+      if (location.state?.${camelCaseName}Query?.page) {
+        setPage(location.state?.${camelCaseName}Query?.page);
+      }
+
+
       return () => controller.abort();
   
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   
     const all${capName}Query = useQuery(
-      ["${camelCaseName}", search, page, dateValue, swichChecked],
+      ["${camelCaseName}", queryUrl, page, location.state?.${camelCaseName}Query?.page, location.state?.${camelCaseName}Query?.queryUrl],
       () => {
         let url = "/${getDataUrl}?";
   
-        let queryText = \`\$\{search ? \`&search=\$\{search\}\` : ""\}\`;
+       // let queryText = \`\$\{search ? \`&search=\$\{search\}\` : ""\}\`;
   
         // let queryDate = getDateQuery(dateValue);
   
-        let queryReplacing = \`\$\{
-          swichChecked === true ? \`&replacement=true\` : \`\`
-        \}\`;
+       
   
-        url += \`page=\$\{page + 1\}\$\{queryText\}\$\{queryReplacing\}\`;
+        url += \`page=\${page + 1}\${
+          location.state?.${camelCaseName}Query?.queryUrl && !queryUrl
+            ? location.state?.${camelCaseName}Query?.queryUrl
+            : queryUrl
+        }\`;
   
         //console.log(url);
-        return toast
-          .promise(Axios.get(url), {
-            loading: "Loading Data",
-            success: "Data Loaded successfully",
-            error: "Error Loading Data",
-          })
-          .then((res) => res.data);
+        return Axios.get(url)
+        .then((res) => {
+          return res.data;
+        })
+        .catch((err) => {
+          toast.error(err.message);
+        });
+      },
+      {
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
       }
     );
   

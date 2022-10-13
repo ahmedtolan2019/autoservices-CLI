@@ -7,31 +7,31 @@ export const RangeDatePicker = (name) => {
   return `
       
 
-import React from "react";
-import { MainDatePicker } from "src/data-tables/components/RangeDatePicker";
-import { useDateModal } from "../contexts/useDateModal";
+// import React from "react";
+// import { MainDatePicker } from "src/data-tables/components/RangeDatePicker";
+// import { useDateModal } from "../contexts/useDateModal";
 
-export const RangeDatePicker = () => {
+// export const RangeDatePicker = () => {
 
-    const {
-        dateValue,
-        handeDateChange,
-        modalDateOpen,
-        handleOpenModal,
-        handleCloseModal,
-      } = useDateModal();
-      return (
-        <MainDatePicker
-          dateValue={dateValue}
-          dateModelOpen={modalDateOpen}
-          setDateModelOpen={handleOpenModal}
-          setDateModelClose={handleCloseModal}
-          handleChange={handeDateChange}
-        />
-      );
+//     const {
+//         dateValue,
+//         handeDateChange,
+//         modalDateOpen,
+//         handleOpenModal,
+//         handleCloseModal,
+//       } = useDateModal();
+//       return (
+//         <MainDatePicker
+//           dateValue={dateValue}
+//           dateModelOpen={modalDateOpen}
+//           setDateModelOpen={handleOpenModal}
+//           setDateModelClose={handleCloseModal}
+//           handleChange={handeDateChange}
+//         />
+//       );
 
 
-}
+// }
 
 
   `;

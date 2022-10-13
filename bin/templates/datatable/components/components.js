@@ -11,14 +11,10 @@ export const components = (name) => {
   export const use${capName}Components = (swichChecked, setSwichChecked) => {
     const getComponents = () => ({
       Toolbar: (props) => (
-        <Toolbar
-          {...props}
-          swichChecked={swichChecked}
-          handleSwitchChange={setSwichChecked}
-        />
+        <Toolbar {...props}/>
       ),
     });
-    return { getComponents };
+    return {getComponents};
   };
   
   `;
