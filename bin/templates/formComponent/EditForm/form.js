@@ -23,6 +23,8 @@ export const editForm = (name) => {
   import { ArrowBack } from "@material-ui/icons";
   
   import { cloudinary } from "src/common/cloudinary";
+  import FormArrayAddWrapper from "src/components/common/FormUI/FormArrayAdd";
+
   
   import { useEffect } from "react";
   import { useNavigate } from "react-router-dom";
@@ -41,8 +43,8 @@ export const editForm = (name) => {
   
     useEffect(() => {
       if (${camelCaseName}ByIdQuery.data) {
-        setFieldValue("nameAr", ${camelCaseName}ByIdQuery.data.body.name.ar);
-        setFieldValue("nameEn", ${camelCaseName}ByIdQuery.data.body.name.en);
+        setFieldValue("nameAr", "${camelCaseName}ByIdQuery.data.body.name.ar");
+        setFieldValue("nameEn", "${camelCaseName}ByIdQuery.data.body.name.en");
       }
     }, [${camelCaseName}ByIdQuery.data]);
   
@@ -73,6 +75,11 @@ export const editForm = (name) => {
                     name={field.name}
                     label={field.label}
                     gridXs={field.gridXs}
+                    multiline={field.multiline}
+                    formInfoGridXs={field.formInfoGridXs}
+                    FormInfo={undefined}
+                    formAlarmInfo={field.formAlarmInfo}
+                    FormAlarmInfoChildren={undefined}
                   />
                 );
               }
@@ -105,6 +112,22 @@ export const editForm = (name) => {
                     name={field.name}
                     // fileUrl={\`\${cloudinary.imageBaseUrl}/\${${camelCaseName}ByIdQuery?.data?.body?.flag}\`}
                     gridXs={field.gridXs}
+                  />
+                );
+              }
+              if (field.fieldType === "arrayAdd") {
+                return (
+                  <FormArrayAddWrapper
+                    label={field.label}
+                    btnText={field.btnText}
+                    chipIcon={field.chipIcon}
+                    name={field.name}
+                    key={field.name}
+                    subFields={field.subFields}
+                    initialSubFieldsState={field.initialSubFieldsState}
+                    subFieldsValidationSchema={
+                      field.subFieldsValidationSchema
+                    }
                   />
                 );
               }
