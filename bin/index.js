@@ -215,7 +215,7 @@ const createRoute = (routePath, elementName, elementPath, parentElementName) =>
                   children: [
                     //${elementName} childern
                     {
-                      path: "/",
+                      index: true,
                       element: <${elementName} />,
                     }
                   ]
@@ -228,7 +228,7 @@ const createRoute = (routePath, elementName, elementPath, parentElementName) =>
                   path: "${routePath}",
                   children: [
                     //${elementName} childern
-                    { path: "/", element: <${elementName} /> },
+                    { index:true, element: <${elementName} /> },
                   ],
                 },`
               );
