@@ -9,6 +9,8 @@ first run => npm install -g
 To create a Parent Data table
 ----------------------------------------------------------------------------------------------
 autoser --data-table --name table-name --dataUrl api-route-get-all/no-slash-first --deleteUrl api-route-delet-one/no-slash-first --path src//data-tables//
+autoser --data-table --name employees --dataUrl employees --deleteUrl employees --path src//data-tables//
+autoser --data-table --name roles --dataUrl employees --deleteUrl roles --path src//data-tables//
 autoser --data-table --name errorLogs --dataUrl errorlogs --deleteUrl errorLogs --path src//data-tables//
 
 
@@ -26,7 +28,7 @@ autoser --screen --name screen-name --route-path screan-route
 
 To Create a parent screen with route and sidebar icon and title
 ----------------------------------------------------------------------------------------------
-autoser --screen --name screen-name  --route-path screen-route --sidebar --t Screen-Title --iName IconName --iPath @material-ui/icons/IconName --bfrpos before-position
+autoser --screen --name accessibility-and-roles  --route-path accessibility-and-roles --sidebar --t Accessibility And Roles --iName Brightness5Icon --iPath "@mui/icons-material/Brightness5" --bfrpos settings
 Ex: autoser --screen --name tolan-ahmedd  --route-path tolan-ahmedd --sidebar --t Tolan-Ahmed --iName Adb --iPath @material-ui/icons/Adb --bfrpos reports
 
 
@@ -42,6 +44,10 @@ autoser --screen --parent-screen merchants --name edit-merchant --route-path :id
 To Create a child screen to child screan with route
 ----------------------------------------------------------------------------------------------
 autoser --screen --parent-screen parent-name//screens//child-name// --name sub-child-name --route-path sub-child-route
+autoser --screen --parent-screen accessibility-and-roles//screens//employees// --name add-employee --route-path add &
+autoser --screen --parent-screen accessibility-and-roles//screens//roles// --name add-role --route-path add &
+autoser --screen --parent-screen accessibility-and-roles//screens//employees// --name edit-employee --route-path :id &
+autoser --screen --parent-screen accessibility-and-roles//screens//roles// --name edit-role --route-path :id
 
 
 EX:
@@ -51,6 +57,8 @@ autoser --screen --parent-screen settings//screens//rates// --name add-rate --ro
 To Create a child screen with route and sidebar icon and title
 ----------------------------------------------------------------------------------------------
 autoser --screen --name child-name --parent-screen parent-name  --route-path child-route --sidebar --t Child-Title --iName IconName --iPath @material-ui/icons/IconName --bfrpos before-position
+autoser --screen --name employees --parent-screen accessibility-and-roles --route-path employees --sidebar --t Employees --iName PeopleOutlineIcon --iPath @mui/icons-material/PeopleOutline --bfrpos accessibility-and-roles
+autoser --screen --name roles --parent-screen accessibility-and-roles --route-path roles --sidebar --t Roles --iName ListAltIcon --iPath @mui/icons-material/ListAlt --bfrpos employees
 EX: autoser --screen --name cancel-reasons --parent-screen settings  --route-path cancel-reasons --sidebar --t Cancel-Reasons --iName DoNotDisturbAlt --iPath @material-ui/icons/DoNotDisturbAlt --bfrpos working-details
 
 
@@ -59,10 +67,14 @@ EX: autoser --screen --name cancel-reasons --parent-screen settings  --route-pat
 To Create add form with add custom hook
 ----------------------------------------------------------------------------------------------
 autoser --form --type add --name entity-name --parent parent-folder --add-url api-route-to-add-one/no-slash-first
+autoser --form --type add --name employee --parent employees --add-url employees
+autoser --form --type add --name role --parent roles --add-url roles
 Ex: autoser --form --type add --name rate --parent rates --add-url rates
 
 To Create edit form with edit custom hook
 ----------------------------------------------------------------------------------------------
 autoser --form --type edit --name entity-name --parent parent-folder --get-one-url api-route-to-get-one/no-slash-first --edit-url api-route-to-edit-one/no-slash-first
+autoser --form --type edit --name employee --parent employees --get-one-url employees --edit-url employees
+autoser --form --type edit --name role --parent roles --get-one-url roles --edit-url roles
 EX:autoser --form --type edit --name rate --parent rates --get-one-url rates --edit-url rates
 
