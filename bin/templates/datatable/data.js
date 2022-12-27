@@ -14,11 +14,11 @@ export const data = (name, getDataUrl) => {
   import { useQueryFilters } from "src/lib/common/react-query-filters";
   import { useLocation } from "react-router-dom";
   // import useHeaderReports from "src/lib/common/react-reports-header/useHeaderReports";
-  import use${capName}Constants from "./constants";
+  import use${capName}Constants from "../constants";
 
   
   export const use${capName}Data = () => {
-    const location = useLocation();
+    const routerLocation = useLocation();
     const { page, queryUrl, setPage, formikValues } = useQueryFilters();
     const ${allCap}_ROUTER_STATE_KEY = use${capName}Constants();
     // const {

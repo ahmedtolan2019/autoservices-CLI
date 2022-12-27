@@ -5,7 +5,7 @@ export const Toolbar = (name) => {
   let capName = capFirst(dashedToCamelCase(name));
   let camelCaseName = dashedToCamelCase(name);
   return `
-  import { MTableToolbar } from "material-table";
+  import { MTableToolbar } from "@material-table/core";
  
   
   export const Toolbar = (props) => {

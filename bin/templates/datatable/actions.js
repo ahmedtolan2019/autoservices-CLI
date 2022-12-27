@@ -9,7 +9,7 @@ export const actions = (name) => {
 
   import { useNavigate,useLocation } from "react-router-dom";
   import { useQueryFilters } from "src/lib/common/react-query-filters";
-  import use${capName}Constants from "./constants";
+  import use${capName}Constants from "../constants";
 
 
   export const use${capName}Actions = (all${capName}Query) => {
