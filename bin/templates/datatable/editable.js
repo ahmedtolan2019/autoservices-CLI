@@ -13,21 +13,10 @@ import Axios from "src/common/axios";
 
 export const use${capName}Editable = (all${capName}Query) => {
 
-    const controller = new AbortController();
-
-    useEffect(() => {
-      return () => controller.abort();
-  
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-
     let editable = {
       onRowDelete: (oldData) =>
       toast.promise(
-        Axios.delete(\`/${deleteUrl}/\${oldData._id}\`, {
-          signal: controller.signal
-        }),
+        Axios.delete(\`/${deleteUrl}/\${oldData._id}\`),
         {
           loading: "Deleting...",
           success: "Deleted successfully",

@@ -14,13 +14,16 @@ export const addForm = (name) => {
     Grid,
     Stack,
     Typography,
-  } from "@material-ui/core";
+  } from "@mui/material";
   import TextfieldWrapper from "src/components/common/FormUI/FormTextField";
   import SelectWrapper from "src/components/common/FormUI/FormSelect";
+  import ApiSelectFieldWrapper from "src/components/common/FormUI/ApiSelectField";
+  import FormArrayAddWrapper from "src/components/common/FormUI/FormArrayAdd";
+
   import { MultiSelectWrapper } from "src/components/common/FormUI/FormMultiSelect";
   import ButtonWrapper from "src/components/common/FormUI/FormButton";
   import ImageInputWrapper from "src/components/common/FormUI/FormImageInput";
-  import { ArrowBack } from "@material-ui/icons";
+  import { ArrowBack } from "@mui/icons-material";
   import { useNavigate } from "react-router-dom";
   import useAdd${capName} from "src/features/${camelCaseName}s/useAdd${capName}";
   const INITIAL_FORM_STATE = {
@@ -110,6 +113,38 @@ export const addForm = (name) => {
                         key={field.name}
                         name={field.name}
                         gridXs={field.gridXs}
+                      />
+                    );
+                  }
+                  if (field.fieldType === "arrayAdd") {
+                    return (
+                      <FormArrayAddWrapper
+                        label={field.label}
+                        btnText={field.btnText}
+                        chipIcon={field.chipIcon}
+                        name={field.name}
+                        key={field.name}
+                        subFields={field.subFields}
+                        initialSubFieldsState={field.initialSubFieldsState}
+                        subFieldsValidationSchema={
+                          field.subFieldsValidationSchema
+                        }
+                      />
+                    );
+                  }
+                  if (field.fieldType === "apiSelect") {
+                    return (
+                      <ApiSelectFieldWrapper
+                        getApiData={field.getApiData}
+                        gridXs={field.gridXs}
+                        initialOptions={field.initialOptions}
+                        label={field.label}
+                        name={field.name}
+                        key={field.name}
+                        parentKey={name}
+                        parentFormValues={values}
+                        disableSelected={field.disableSelected}
+                        selectedValueType={field.selectedValueType}
                       />
                     );
                   }

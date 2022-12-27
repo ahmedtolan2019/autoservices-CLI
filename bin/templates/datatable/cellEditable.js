@@ -11,14 +11,7 @@ import Axios from "src/common/axios";
 import toast from "react-hot-toast";
 
 export const use${capName}CellEditable = (all${capName}Query) => {
-    const controller = new AbortController();
-  
-    useEffect(() => {
-      return () => controller.abort();
-  
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+ 
 
     let cellEditable = {
 

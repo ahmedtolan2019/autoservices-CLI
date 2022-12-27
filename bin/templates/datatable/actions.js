@@ -4,10 +4,12 @@ import { dashedToCamelCase } from "../../utils/dashedToCamelCase.js";
 export const actions = (name) => {
   let capName = capFirst(dashedToCamelCase(name));
   let camelCaseName = dashedToCamelCase(name);
+  let allCap = camelCaseName.toUpperCase();
   return `
 
   import { useNavigate,useLocation } from "react-router-dom";
   import { useQueryFilters } from "src/lib/common/react-query-filters";
+  import use${capName}Constants from "./constants";
 
 
   export const use${capName}Actions = (all${capName}Query) => {
@@ -27,7 +29,16 @@ export const actions = (name) => {
       //   tooltip: "Edit this One",
       //   isFreeAction: false,
       //   onClick: (event, rowData) => {
-      //     navigate(\`/admin/${name}/edit/\$\{rowData._id\}\`);
+      //     navigate(\`/admin/${name}/edit/\$\{rowData._id\}\`, 
+      // {
+          //   state: {
+          //     fromPath: routerLocation.pathname,
+          //     [${allCap}_ROUTER_STATE_KEY]: {
+          //       queryUrl,
+          //       page,
+          //     },
+          //   },
+          // });
       //   },
       // },
       // {

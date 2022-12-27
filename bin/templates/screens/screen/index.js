@@ -5,7 +5,7 @@ export const screen = (name) => {
   let capName = capFirst(dashedToCamelCase(name));
   let camelCaseName = dashedToCamelCase(name);
   return `
-  import Box from "@material-ui/core/Box";
+  import {Box} from "@mui/material";
 
   
   const ${capName}Screen = () => {

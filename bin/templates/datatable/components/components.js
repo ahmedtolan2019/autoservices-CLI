@@ -8,7 +8,7 @@ export const components = (name) => {
   import React from "react";
   import { Toolbar } from "../components/Toolbar";
   
-  export const use${capName}Components = (swichChecked, setSwichChecked) => {
+  export const use${capName}Components = () => {
     const getComponents = () => ({
       Toolbar: (props) => (
         <Toolbar {...props}/>

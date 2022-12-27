@@ -7,20 +7,21 @@ export const editForm = (name) => {
   return `
   import { Form, useFormikContext } from "formik";
 
-  import { Button, Card, Grid, Stack, Typography } from "@material-ui/core";
+  import { Button, Card, Grid, Stack, Typography } from "@mui/material";
   import TextfieldWrapper from "src/components/common/FormUI/FormTextField";
   
   import SelectWrapper from "src/components/common/FormUI/FormSelect";
   
-  import _ from "lodash";
-  
+  import ApiSelectFieldWrapper from "src/components/common/FormUI/ApiSelectField";
+
+
   import { MultiSelectWrapper } from "src/components/common/FormUI/FormMultiSelect";
   
   import ButtonWrapper from "src/components/common/FormUI/FormButton";
   
   import ImageInputWrapper from "src/components/common/FormUI/FormImageInput";
   
-  import { ArrowBack } from "@material-ui/icons";
+  import { ArrowBack } from "@mui/icons-material";
   
   import { cloudinary } from "src/common/cloudinary";
   import FormArrayAddWrapper from "src/components/common/FormUI/FormArrayAdd";
@@ -128,6 +129,22 @@ export const editForm = (name) => {
                     subFieldsValidationSchema={
                       field.subFieldsValidationSchema
                     }
+                  />
+                );
+              }
+              if (field.fieldType === "apiSelect") {
+                return (
+                  <ApiSelectFieldWrapper
+                    getApiData={field.getApiData}
+                    gridXs={field.gridXs}
+                    initialOptions={field.initialOptions}
+                    label={field.label}
+                    name={field.name}
+                    key={field.name}
+                    parentKey={name}
+                    parentFormValues={values}
+                    disableSelected={field.disableSelected}
+                    selectedValueType={field.selectedValueType}
                   />
                 );
               }

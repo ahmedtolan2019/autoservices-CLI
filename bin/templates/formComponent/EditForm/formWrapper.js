@@ -11,7 +11,7 @@ export const editFormWrapper = (name) => {
 
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Container } from "@material-ui/core";
+import { Container } from "@mui/material";
 
 import EditForm from "./EditForm";
 

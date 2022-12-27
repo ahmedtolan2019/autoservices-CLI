@@ -6,21 +6,15 @@ export const Toolbar = (name) => {
   let camelCaseName = dashedToCamelCase(name);
   return `
   import { MTableToolbar } from "material-table";
-  // import ActiveBlockSwitch from "src/data-tables/components/Switch";
-  // import { SearchBySelect } from "./SearchBySelect";
-  
-  // import { RangeDatePicker } from "./RangeDatePicker";
-  // import ActiveBlockSwitch from "src/data-tables/components/Switch";
+ 
   
   export const Toolbar = (props) => {
     return (
       <div
         style={{
-          // position: "relative",
-          // paddingTop: 15,
+          position: "relative",
           backgroundColor: "#328ed01e",
           borderRadius: "10px 10px 0 0",
-          // paddingBottom: 15,
         }}
       >
         <MTableToolbar

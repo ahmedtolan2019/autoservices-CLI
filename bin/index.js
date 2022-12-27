@@ -26,6 +26,9 @@ import path from "path";
 import { editFeature } from "./templates/features/edit.js";
 import { editForm } from "./templates/formComponent/EditForm/form.js";
 import { editFormWrapper } from "./templates/formComponent/EditForm/formWrapper.js";
+import { constants } from "./templates/datatable/constants.js";
+import { useReports } from "./templates/datatable/hooks/useReports.js";
+import { useInitialFilters } from "./templates/datatable/hooks/useInitialFilters.js";
 
 console.log("================= AUTO SERVICES CLI =================");
 // console.log(yargs(process.argv).argv);
@@ -39,11 +42,29 @@ let inputs = yargs(process.argv).argv;
 
 let formatedName = capFirst(dashedToCamelCase(inputs.name));
 let docs = [
-  { name: "wrapper.js", type: "file", content: wrapper(inputs.name) },
+  { name: "wrapper.jsx", type: "file", content: wrapper(inputs.name) },
+  { name: "constants.jsx", type: "file", content: constants(inputs.name) },
   {
-    name: `${formatedName}DataTable.js`,
+    name: `${formatedName}DataTable.jsx`,
     type: "file",
     content: dataTable(inputs.name),
+  },
+
+  {
+    name: "hooks",
+    type: "folder",
+    content: [
+      {
+        name: "useReports.jsx",
+        type: "file",
+        content: useReports(inputs.name),
+      },
+      {
+        name: "useInitialFilters.jsx",
+        type: "file",
+        content: useInitialFilters(inputs.name),
+      },
+    ],
   },
 
   {
@@ -51,12 +72,7 @@ let docs = [
     type: "folder",
     content: [
       {
-        name: `useDateModal.js`,
-        type: "file",
-        content: dateModel(inputs.name),
-      },
-      {
-        name: `use${formatedName}DataTable.js`,
+        name: `use${formatedName}DataTable.jsx`,
         type: "file",
         content: useDataTable(inputs.name),
       },
@@ -68,12 +84,7 @@ let docs = [
     type: "folder",
     content: [
       {
-        name: "RangeDatePicker.js",
-        type: "file",
-        content: RangeDatePicker(inputs.name),
-      },
-      {
-        name: "Toolbar.js",
+        name: "Toolbar.jsx",
         type: "file",
         content: Toolbar(inputs.name),
       },
@@ -85,37 +96,37 @@ let docs = [
     type: "folder",
     content: [
       {
-        name: `use${formatedName}Data.js`,
+        name: `use${formatedName}Data.jsx`,
         type: "file",
         content: data(inputs.name, inputs.dataUrl),
       },
       {
-        name: `use${formatedName}Actions.js`,
+        name: `use${formatedName}Actions.jsx`,
         type: "file",
         content: actions(inputs.name),
       },
       {
-        name: `use${formatedName}Editable.js`,
+        name: `use${formatedName}Editable.jsx`,
         type: "file",
         content: editable(inputs.name, inputs.deleteUrl),
       },
       {
-        name: `use${formatedName}CellEditable.js`,
+        name: `use${formatedName}CellEditable.jsx`,
         type: "file",
         content: cellEditable(inputs.name),
       },
       {
-        name: `use${formatedName}Columns.js`,
+        name: `use${formatedName}Columns.jsx`,
         type: "file",
         content: columns(inputs.name),
       },
       {
-        name: `use${formatedName}Options.js`,
+        name: `use${formatedName}Options.jsx`,
         type: "file",
         content: options(inputs.name),
       },
       {
-        name: `use${formatedName}Components.js`,
+        name: `use${formatedName}Components.jsx`,
         type: "file",
         content: components(inputs.name),
       },
@@ -180,7 +191,7 @@ if (inputs["data-table"]) {
 //read file constet
 const createRoute = (routePath, elementName, elementPath, parentElementName) =>
   fs.promises
-    .readFile("src\\routes.js", {
+    .readFile("src\\routes.jsx", {
       encoding: "utf-8",
     })
     .then((data) => {
@@ -189,9 +200,9 @@ const createRoute = (routePath, elementName, elementPath, parentElementName) =>
         `//cli-imported-routes\nimport ${elementName} from '${elementPath}';`
       );
 
-      fs.promises.writeFile("src\\routes.js", newData).then((data) => {
+      fs.promises.writeFile("src\\routes.jsx", newData).then((data) => {
         fs.promises
-          .readFile("src\\routes.js", {
+          .readFile("src\\routes.jsx", {
             encoding: "utf-8",
           })
           .then((data) => {
@@ -223,7 +234,7 @@ const createRoute = (routePath, elementName, elementPath, parentElementName) =>
               );
             }
 
-            fs.promises.writeFile("src\\routes.js", newData).then((data) => {
+            fs.promises.writeFile("src\\routes.jsx", newData).then((data) => {
               console.log("succes adding new route, try visit it! :)");
             });
           });
@@ -238,7 +249,7 @@ const createSidebarRoute = (
   iconPath,
   beforePosition
 ) => {
-  let filePath = "src\\components\\admin-dashboard\\DashboardSidebar.js";
+  let filePath = "src\\components\\admin-dashboard\\DashboardSidebar.jsx";
   console.log(filePath);
   fs.promises
     .readFile(filePath, {
@@ -303,7 +314,7 @@ if (inputs["screen"]) {
       await createDir(`${screenDir}\\screens`, { recursive: true });
 
       //create index with returned content from screen
-      await createFile(`${screenDir}\\index.js`, screen(inputs.name));
+      await createFile(`${screenDir}\\index.jsx`, screen(inputs.name));
 
       //create route for this screen
       let parentNameArr = inputs["parent-screen"]
@@ -366,7 +377,7 @@ if (inputs["form"]) {
         await createFile(
           parentFeatureDir +
             "\\" +
-            `useAdd${capFirst(dashedToCamelCase(inputs.name))}.js`,
+            `useAdd${capFirst(dashedToCamelCase(inputs.name))}.jsx`,
           addFeature(inputs.name, inputs["add-url"])
         );
 
@@ -385,7 +396,7 @@ if (inputs["form"]) {
         await createFile(
           `${parentComponentDir}\\Add${capFirst(
             dashedToCamelCase(inputs.name)
-          )}Form\\index.js`,
+          )}Form\\index.jsx`,
           addForm(inputs.name)
         );
       }
@@ -395,7 +406,7 @@ if (inputs["form"]) {
         await createFile(
           parentFeatureDir +
             "\\" +
-            `useEdit${capFirst(dashedToCamelCase(inputs.name))}.js`,
+            `useEdit${capFirst(dashedToCamelCase(inputs.name))}.jsx`,
           editFeature(inputs.name, inputs["edit-url"], inputs["get-one-url"])
         );
 
@@ -414,14 +425,14 @@ if (inputs["form"]) {
         await createFile(
           `${parentComponentDir}\\Edit${capFirst(
             dashedToCamelCase(inputs.name)
-          )}Form\\EditForm.js`,
+          )}Form\\EditForm.jsx`,
           editForm(inputs.name)
         );
         //create edit form Wrapper file
         await createFile(
           `${parentComponentDir}\\Edit${capFirst(
             dashedToCamelCase(inputs.name)
-          )}Form\\index.js`,
+          )}Form\\index.jsx`,
           editFormWrapper(inputs.name)
         );
       }
