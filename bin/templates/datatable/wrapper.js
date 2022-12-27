@@ -12,6 +12,8 @@ export const wrapper = (name) => {
   import useInitialFilters from "./hooks/useInitialFilters";
   // import useReports from "./hooks/useReports";
   import { ${capName}DataTable } from "./${capName}DataTable";
+  import { Provide${capName}DataTable } from "./contexts/use${capName}DataTable";
+
   
   const ${capName}DataTableWrapper = () => {
     const initialFilters = useInitialFilters();
