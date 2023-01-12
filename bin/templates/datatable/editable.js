@@ -7,13 +7,15 @@ export const editable = (name, deleteUrl) => {
   return `
             
 
-import { useEffect } from "react";
 import toast from "react-hot-toast";
 import Axios from "src/common/axios";
+import { use${capName}Roles } from '../hooks/use${capName}Roles';
 
 export const use${capName}Editable = (all${capName}Query) => {
-
+  const { ${camelCaseName}Roles } = use${capName}Roles();
+    
     let editable = {
+      isDeletable: () => (${camelCaseName}Roles.actions.delete ? true : false),
       onRowDelete: (oldData) =>
       toast.promise(
         Axios.delete(\`/${deleteUrl}/\${oldData._id}\`),

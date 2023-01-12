@@ -29,6 +29,7 @@ import { editFormWrapper } from "./templates/formComponent/EditForm/formWrapper.
 import { constants } from "./templates/datatable/constants.js";
 import { useReports } from "./templates/datatable/hooks/useReports.js";
 import { useInitialFilters } from "./templates/datatable/hooks/useInitialFilters.js";
+import { useRoles } from "./templates/datatable/hooks/useRoles.js";
 
 console.log("================= AUTO SERVICES CLI =================");
 // console.log(yargs(process.argv).argv);
@@ -63,6 +64,11 @@ let docs = [
         name: "useInitialFilters.jsx",
         type: "file",
         content: useInitialFilters(inputs.name),
+      },
+      {
+        name: `use${formatedName}Roles.jsx`,
+        type: "file",
+        content: useRoles(inputs.name),
       },
     ],
   },

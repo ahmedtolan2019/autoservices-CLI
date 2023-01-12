@@ -13,6 +13,9 @@ autoser --data-table --name employees --dataUrl employees --deleteUrl employees 
 autoser --data-table --name roles --dataUrl employees --deleteUrl roles --path src//data-tables//
 autoser --data-table --name errorLogs --dataUrl errorlogs --deleteUrl errorLogs --path src//data-tables//
 
+autoser --data-table --name carOrigins --dataUrl lookup/car-origin-admin/all --deleteUrl lookup/car-origin --path src//data-tables//
+autoser --data-table --name cities --dataUrl lookup/city/all --deleteUrl lookup/city --path src//data-tables//
+
 
 To create a Child Data table
 ----------------------------------------------------------------------------------------------
