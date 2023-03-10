@@ -48,6 +48,7 @@ autoser --screen --parent-screen accessibility-and-roles//screens//employees// -
 autoser --screen --parent-screen accessibility-and-roles//screens//roles// --name add-role --route-path add &
 autoser --screen --parent-screen accessibility-and-roles//screens//employees// --name edit-employee --route-path :id &
 autoser --screen --parent-screen accessibility-and-roles//screens//roles// --name edit-role --route-path :id
+autoser --screen --parent-screen users// --name user-profile --route-path :id
 
 
 EX:
