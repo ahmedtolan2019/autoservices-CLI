@@ -282,7 +282,7 @@ export const useInitialFilters = (name) => {
         //   isInstantFilter: false,
         //   apiKey: {
         //     fromDate: "fromDate",
-        //     toDate: "fromDate",
+        //     toDate: "toDate",
         //   },
         // },
         {
