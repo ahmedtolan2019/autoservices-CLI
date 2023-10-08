@@ -16,6 +16,8 @@ autoser --data-table --name errorLogs --dataUrl errorlogs --deleteUrl errorLogs 
 autoser --data-table --name carOrigins --dataUrl lookup/car-origin-admin/all --deleteUrl lookup/car-origin --path src//data-tables//
 autoser --data-table --name cities --dataUrl lookup/city/all --deleteUrl lookup/city --path src//data-tables//
 
+autoser --data-table --name complaints --dataUrl complaint --deleteUrl complaint --path src//data-tables//
+
 
 To create a Child Data table
 ----------------------------------------------------------------------------------------------
@@ -33,6 +35,8 @@ To Create a parent screen with route and sidebar icon and title
 ----------------------------------------------------------------------------------------------
 autoser --screen --name accessibility-and-roles  --route-path accessibility-and-roles --sidebar --t Accessibility And Roles --iName Brightness5Icon --iPath "@mui/icons-material/Brightness5" --bfrpos settings
 Ex: autoser --screen --name tolan-ahmedd  --route-path tolan-ahmedd --sidebar --t Tolan-Ahmed --iName Adb --iPath @material-ui/icons/Adb --bfrpos reports
+
+autoser --screen --name merchants-complaints  --route-path merchants-complaints --sidebar --t Merchants-Complaints --iName merchants-complaints --iPath @mui/icons-material/NewReleases --bfrpos merchants-visits
 
 
 To Create a child screen with route

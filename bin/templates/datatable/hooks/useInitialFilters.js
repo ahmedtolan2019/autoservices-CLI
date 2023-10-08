@@ -7,6 +7,7 @@ export const useInitialFilters = (name) => {
   return `
 
   import { useMemo } from "react";
+  import { DASHBOARD_API } from 'src/config';
 
   const useInitialFilters = () => {
     const initialFilters = useMemo(
@@ -52,7 +53,7 @@ export const useInitialFilters = (name) => {
         //   type: "apiAutoComplete",
         //   initialState: "",
         //   getApiData: {
-        //     url: "/user/all?page=1&autoComplete=true",
+        //     url: \`\${DASHBOARD_API}/user?page=1&autoComplete=true\`,
         //     key: "_id",
         //     searchKey: "search",
         //     value: "_id",
@@ -74,7 +75,7 @@ export const useInitialFilters = (name) => {
         //   type: "apiAutoComplete",
         //   initialState: "",
         //   getApiData: {
-        //     url: "/merchant/all?page=1&autoComplete=true",
+        //     url: \`\${DASHBOARD_API}/merchant?page=1&autoComplete=true\`,
         //     key: "_id",
         //     searchKey: "search",
         //     value: "_id",
